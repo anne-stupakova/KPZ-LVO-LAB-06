@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
+
 namespace CheckersGame
 {
     public partial class PrototypeCheckerGame : Form
@@ -31,8 +32,10 @@ namespace CheckersGame
         public PrototypeCheckerGame()
         {
             InitializeComponent();
-            whiteFigure = new Bitmap(new Bitmap(@"C:\Users\Вадим\Desktop\U.W.F\University\KPZ\KPZ-LAB-06\KPZ-LAB-06\w.png"), new Size(CageSize - 10, CageSize - 10));
-            blackFigure = new Bitmap(new Bitmap(@"C:\Users\Вадим\Desktop\U.W.F\University\KPZ\KPZ-LAB-06\KPZ-LAB-06\b.png"), new Size(CageSize - 10, CageSize - 10));
+
+            whiteFigure = Properties.Resources.w.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero);
+            blackFigure = Properties.Resources.b.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero);
+
             Initialization();
         }
 
@@ -230,10 +233,17 @@ namespace CheckersGame
             if (countEatSteps > 0)
                 CloseSimpleSteps(simpleSteps);
         }
-        public void ShowDiagonalWay(int IcurrFigure, int JcurrFigure, bool isOneStep = false)
+        public void ShowDiagonalWay(int IcurrFigure, int currentFigureColumn, bool isOneStep = false)
         {
-            int j = JcurrFigure + 1;
-            for (int i = IcurrFigure - 1; i >= 0; i--)
+            ShowDiagonalWayUpRight(IcurrFigure, currentFigureColumn, isOneStep);
+            ShowDiagonalWayUpLeft(IcurrFigure, currentFigureColumn, isOneStep);
+            ShowDiagonalWayDownLeft(IcurrFigure, currentFigureColumn, isOneStep);
+            ShowDiagonalWayDownRight(IcurrFigure, currentFigureColumn, isOneStep);
+        }
+        private void ShowDiagonalWayUpRight(int currentFigureRow, int currentFigureColumn, bool isOneStep)
+        {
+            int j = currentFigureColumn + 1;
+            for (int i = currentFigureRow - 1; i >= 0; i--)
             {
                 if (currentPlayer == 1 && isOneStep && !isContinue) break;
                 if (IsInsideBorders(i, j))
@@ -248,9 +258,11 @@ namespace CheckersGame
                 if (isOneStep)
                     break;
             }
-
-            j = JcurrFigure - 1;
-            for (int i = IcurrFigure - 1; i >= 0; i--)
+        }
+        private void ShowDiagonalWayUpLeft(int currentFigureRow, int currentFigureColumn, bool isOneStep)
+        {
+            int j = currentFigureColumn - 1;
+            for (int i = currentFigureRow - 1; i >= 0; i--)
             {
                 if (currentPlayer == 1 && isOneStep && !isContinue) break;
                 if (IsInsideBorders(i, j))
@@ -265,9 +277,11 @@ namespace CheckersGame
                 if (isOneStep)
                     break;
             }
-
-            j = JcurrFigure - 1;
-            for (int i = IcurrFigure + 1; i < 8; i++)
+        }
+        private void ShowDiagonalWayDownLeft(int currentFigureRow, int currentFigureColumn, bool isOneStep)
+        {
+            int j = currentFigureColumn - 1;
+            for (int i = currentFigureRow + 1; i < 8; i++)
             {
                 if (currentPlayer == 2 && isOneStep && !isContinue) break;
                 if (IsInsideBorders(i, j))
@@ -282,9 +296,11 @@ namespace CheckersGame
                 if (isOneStep)
                     break;
             }
-
-            j = JcurrFigure + 1;
-            for (int i = IcurrFigure + 1; i < 8; i++)
+        }
+        private void ShowDiagonalWayDownRight(int currentFigureRow, int currentFigureColumn, bool isOneStep)
+        {
+            int j = currentFigureColumn + 1;
+            for (int i = currentFigureRow + 1; i < 8; i++)
             {
                 if (currentPlayer == 2 && isOneStep && !isContinue) break;
                 if (IsInsideBorders(i, j))
@@ -406,22 +422,22 @@ namespace CheckersGame
         }
 
         // Checks if there are possible moves with eating pieces.
-        public bool IsButtonHasDeleteStep(int IcurrFigure, int JcurrFigure, bool isOneStep, int[] dir)
+        public bool IsButtonHasDeleteStep(int IcurrFigure, int currentFigureColumn, bool isOneStep, int[] dir)
         {
             bool deleteStep = false;
 
-            deleteStep = CheckDirection(IcurrFigure, JcurrFigure, isOneStep, dir, 1, -1);
-            deleteStep |= CheckDirection(IcurrFigure, JcurrFigure, isOneStep, dir, 1, 1);
-            deleteStep |= CheckDirection(IcurrFigure, JcurrFigure, isOneStep, dir, -1, 1);
-            deleteStep |= CheckDirection(IcurrFigure, JcurrFigure, isOneStep, dir, -1, -1);
+            deleteStep = CheckDirection(IcurrFigure, currentFigureColumn, isOneStep, dir, 1, -1);
+            deleteStep |= CheckDirection(IcurrFigure, currentFigureColumn , isOneStep, dir, 1, 1);
+            deleteStep |= CheckDirection(IcurrFigure, currentFigureColumn, isOneStep, dir, -1, 1);
+            deleteStep |= CheckDirection(IcurrFigure, currentFigureColumn, isOneStep, dir, -1, -1);
 
             return deleteStep;
         }
-        private bool CheckDirection(int IcurrFigure, int JcurrFigure, bool isOneStep, int[] dir, int deltaI, int deltaJ)
+        private bool CheckDirection(int currentFigureRow, int currentFigureColumn, bool isOneStep, int[] dir, int deltaI, int deltaJ)
         {
             bool eatStep = false;
-            int j = JcurrFigure + deltaJ;
-            for (int i = IcurrFigure + deltaI; i >= 0 && i < 8; i += deltaI)
+            int j = currentFigureColumn + deltaJ;
+            for (int i = currentFigureRow + deltaI; i >= 0 && i < 8; i += deltaI)
             {
                 if ((currentPlayer == 1 && isOneStep && !isContinue) || (dir[0] == deltaI && dir[1] == deltaJ && !isOneStep))
                     break;
