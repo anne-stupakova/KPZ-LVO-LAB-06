@@ -230,10 +230,22 @@ namespace CheckersGame
             if (countEatSteps > 0)
                 CloseSimpleSteps(simpleSteps);
         }
-        public void ShowDiagonalWay(int IcurrFigure, int JcurrFigure, bool isOneStep = false)
+        
+        //I will change next method because it's too long and complicated
+        //We can break it down into others methods
+        //Because methods should be small and do only one thing: "FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL.
+        //THEY SHOULD DO IT ONLY.
+        public void ShowDiagonalWay(int IcurrFigure, int currentFigureColumn, bool isOneStep = false)
         {
-            int j = JcurrFigure + 1;
-            for (int i = IcurrFigure - 1; i >= 0; i--)
+            ShowDiagonalWayUpRight(IcurrFigure, currentFigureColumn, isOneStep);
+            ShowDiagonalWayUpLeft(IcurrFigure, currentFigureColumn, isOneStep);
+            ShowDiagonalWayDownLeft(IcurrFigure, currentFigureColumn, isOneStep);
+            ShowDiagonalWayDownRight(IcurrFigure, currentFigureColumn, isOneStep);
+        }
+        private void ShowDiagonalWayUpRight(int currentFigureRow, int currentFigureColumn, bool isOneStep)
+        {
+            int j = currentFigureColumn + 1;
+            for (int i = currentFigureRow - 1; i >= 0; i--)
             {
                 if (currentPlayer == 1 && isOneStep && !isContinue) break;
                 if (IsInsideBorders(i, j))
@@ -248,9 +260,11 @@ namespace CheckersGame
                 if (isOneStep)
                     break;
             }
-
-            j = JcurrFigure - 1;
-            for (int i = IcurrFigure - 1; i >= 0; i--)
+        }
+        private void ShowDiagonalWayUpLeft(int currentFigureRow, int currentFigureColumn, bool isOneStep)
+        {
+            int j = currentFigureColumn - 1;
+            for (int i = currentFigureRow - 1; i >= 0; i--)
             {
                 if (currentPlayer == 1 && isOneStep && !isContinue) break;
                 if (IsInsideBorders(i, j))
@@ -265,9 +279,11 @@ namespace CheckersGame
                 if (isOneStep)
                     break;
             }
-
-            j = JcurrFigure - 1;
-            for (int i = IcurrFigure + 1; i < 8; i++)
+        }
+        private void ShowDiagonalWayDownLeft(int currentFigureRow, int currentFigureColumn, bool isOneStep)
+        {
+            int j = currentFigureColumn - 1;
+            for (int i = currentFigureRow + 1; i < 8; i++)
             {
                 if (currentPlayer == 2 && isOneStep && !isContinue) break;
                 if (IsInsideBorders(i, j))
@@ -282,9 +298,11 @@ namespace CheckersGame
                 if (isOneStep)
                     break;
             }
-
-            j = JcurrFigure + 1;
-            for (int i = IcurrFigure + 1; i < 8; i++)
+        }
+        private void ShowDiagonalWayDownRight(int currentFigureRow, int currentFigureColumn, bool isOneStep)
+        {
+            int j = currentFigureColumn + 1;
+            for (int i = currentFigureRow + 1; i < 8; i++)
             {
                 if (currentPlayer == 2 && isOneStep && !isContinue) break;
                 if (IsInsideBorders(i, j))
