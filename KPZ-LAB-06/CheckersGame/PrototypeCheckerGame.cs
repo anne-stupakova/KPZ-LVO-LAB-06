@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
+
 namespace CheckersGame
 {
     public partial class PrototypeCheckerGame : Form
@@ -31,8 +32,10 @@ namespace CheckersGame
         public PrototypeCheckerGame()
         {
             InitializeComponent();
-            whiteFigure = new Bitmap(new Bitmap(@"C:\Users\Вадим\Desktop\U.W.F\University\KPZ\KPZ-LAB-06\KPZ-LAB-06\w.png"), new Size(CageSize - 10, CageSize - 10));
-            blackFigure = new Bitmap(new Bitmap(@"C:\Users\Вадим\Desktop\U.W.F\University\KPZ\KPZ-LAB-06\KPZ-LAB-06\b.png"), new Size(CageSize - 10, CageSize - 10));
+
+            whiteFigure = Properties.Resources.w.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero);
+            blackFigure = Properties.Resources.b.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero);
+
             Initialization();
         }
 
@@ -230,11 +233,7 @@ namespace CheckersGame
             if (countEatSteps > 0)
                 CloseSimpleSteps(simpleSteps);
         }
-        
-        //I will change next method because it's too long and complicated
-        //We can break it down into others methods
-        //Because methods should be small and do only one thing: "FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL.
-        //THEY SHOULD DO IT ONLY.
+
         public void ShowDiagonalWay(int IcurrFigure, int currentFigureColumn, bool isOneStep = false)
         {
             ShowDiagonalWayUpRight(IcurrFigure, currentFigureColumn, isOneStep);
@@ -424,22 +423,22 @@ namespace CheckersGame
         }
 
         // Checks if there are possible moves with eating pieces.
-        public bool IsButtonHasDeleteStep(int IcurrFigure, int JcurrFigure, bool isOneStep, int[] dir)
+        public bool IsButtonHasDeleteStep(int IcurrFigure, int currentFigureColumn, bool isOneStep, int[] dir)
         {
             bool deleteStep = false;
 
-            deleteStep = CheckDirection(IcurrFigure, JcurrFigure, isOneStep, dir, 1, -1);
-            deleteStep |= CheckDirection(IcurrFigure, JcurrFigure, isOneStep, dir, 1, 1);
-            deleteStep |= CheckDirection(IcurrFigure, JcurrFigure, isOneStep, dir, -1, 1);
-            deleteStep |= CheckDirection(IcurrFigure, JcurrFigure, isOneStep, dir, -1, -1);
+            deleteStep = CheckDirection(IcurrFigure, currentFigureColumn, isOneStep, dir, 1, -1);
+            deleteStep |= CheckDirection(IcurrFigure, currentFigureColumn , isOneStep, dir, 1, 1);
+            deleteStep |= CheckDirection(IcurrFigure, currentFigureColumn, isOneStep, dir, -1, 1);
+            deleteStep |= CheckDirection(IcurrFigure, currentFigureColumn, isOneStep, dir, -1, -1);
 
             return deleteStep;
         }
-        private bool CheckDirection(int IcurrFigure, int JcurrFigure, bool isOneStep, int[] dir, int deltaI, int deltaJ)
+        private bool CheckDirection(int currentFigureRow, int currentFigureColumn, bool isOneStep, int[] dir, int deltaI, int deltaJ)
         {
             bool eatStep = false;
-            int j = JcurrFigure + deltaJ;
-            for (int i = IcurrFigure + deltaI; i >= 0 && i < 8; i += deltaI)
+            int j = currentFigureColumn + deltaJ;
+            for (int i = currentFigureRow + deltaI; i >= 0 && i < 8; i += deltaI)
             {
                 if ((currentPlayer == 1 && isOneStep && !isContinue) || (dir[0] == deltaI && dir[1] == deltaJ && !isOneStep))
                     break;
