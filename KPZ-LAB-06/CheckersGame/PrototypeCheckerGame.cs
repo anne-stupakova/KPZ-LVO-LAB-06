@@ -233,6 +233,7 @@ namespace CheckersGame
             if (countEatSteps > 0)
                 CloseSimpleSteps(simpleSteps);
         }
+
         public void ShowDiagonalWay(int IcurrFigure, int currentFigureColumn, bool isOneStep = false)
         {
             ShowDiagonalWayUpRight(IcurrFigure, currentFigureColumn, isOneStep);
