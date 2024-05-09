@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-
 namespace CheckersGame
 {
     public partial class PrototypeCheckerGame : Form
@@ -26,18 +25,66 @@ namespace CheckersGame
 
         Button[,] buttons = new Button[MapSize, MapSize];
 
-        Image whiteFigure;
-        Image blackFigure;
+        Image UpFigure = Properties.Resources.white.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero);
+        Image DownFigure = Properties.Resources.black.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero);
+
+        private CheckerColorManager colorManager;
 
         public PrototypeCheckerGame()
         {
             InitializeComponent();
 
-            whiteFigure = Properties.Resources.w.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero);
-            blackFigure = Properties.Resources.b.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero);
+            Image whiteDefault = Properties.Resources.white.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero);
+            Image blackDefault = Properties.Resources.black.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero);
+
+            colorManager = new CheckerColorManager(whiteDefault, blackDefault);
+
+            UPColorCB.SelectedIndexChanged += ColorCB_SelectedIndexChanged;
+            DOWNColorCB.SelectedIndexChanged += ColorCB_SelectedIndexChanged;
 
             Initialization();
         }
+
+        private void ColorCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+
+            Dictionary<string, Image> imageDictionary = new Dictionary<string, Image>
+            {
+                { "White", Properties.Resources.white.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero) },
+                { "Black", Properties.Resources.black.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero) },
+                
+                { "Blue", Properties.Resources.blue.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero) },
+                { "Yellow", Properties.Resources.yellow.GetThumbnailImage(CageSize - 10, CageSize - 10, null, IntPtr.Zero) }
+            };
+
+            Image selectedImage;
+            if (imageDictionary.TryGetValue(cb.SelectedItem.ToString(), out selectedImage))
+            {
+                if (cb == UPColorCB)
+                {
+                    colorManager.WhiteFigure = selectedImage;
+                }
+                else if (cb == DOWNColorCB)
+                {
+                    colorManager.BlackFigure = selectedImage;
+                }
+
+                for (int i = 0; i < MapSize; i++)
+                {
+                    for (int j = 0; j < MapSize; j++)
+                    {
+                        int player = map[i, j];
+                        if (player == 1 && cb == UPColorCB || player == 2 && cb == DOWNColorCB)
+                        {
+                            colorManager.UpdateButtonImage(buttons[i, j], player);
+                        }
+                    }
+                }
+            }
+        }
+
+
 
         // Methods for rendering
         public void Initialization()
@@ -82,9 +129,6 @@ namespace CheckersGame
         }
         public void CreateMap()
         {
-            this.Width = (MapSize + 1) * CageSize;
-            this.Height = (MapSize + 1) * CageSize;
-
             for (int i = 0; i < MapSize; i++)
             {
                 for (int j = 0; j < MapSize; j++)
@@ -94,8 +138,8 @@ namespace CheckersGame
                     button.Size = new Size(CageSize, CageSize);
                     button.Click += new EventHandler(OnFigurePress);
                     if (map[i, j] == 1)
-                        button.Image = whiteFigure;
-                    else if (map[i, j] == 2) button.Image = blackFigure;
+                        button.Image = UpFigure;
+                    else if (map[i, j] == 2) button.Image = DownFigure;
 
                     button.BackColor = GetPrevButtonColor(button);
                     button.ForeColor = Color.Red;
@@ -233,7 +277,6 @@ namespace CheckersGame
             if (countEatSteps > 0)
                 CloseSimpleSteps(simpleSteps);
         }
-
         public void ShowDiagonalWay(int IcurrFigure, int currentFigureColumn, bool isOneStep = false)
         {
             ShowDiagonalWayUpRight(IcurrFigure, currentFigureColumn, isOneStep);
@@ -548,6 +591,11 @@ namespace CheckersGame
             {
                 button.Text = "👑";
             }
+        }
+
+        private void UPColorCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
