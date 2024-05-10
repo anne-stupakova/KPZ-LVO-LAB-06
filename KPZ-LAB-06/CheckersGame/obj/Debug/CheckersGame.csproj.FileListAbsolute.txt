@@ -8,13 +8,3 @@ C:\Users\Вадим\Desktop\CheckersGame-master\CheckersGame\obj\Debug\CheckersG
 C:\Users\Вадим\Desktop\CheckersGame-master\CheckersGame\obj\Debug\CheckersGame.csproj.CoreCompileInputs.cache
 C:\Users\Вадим\Desktop\CheckersGame-master\CheckersGame\obj\Debug\CheckersGame.exe
 C:\Users\Вадим\Desktop\CheckersGame-master\CheckersGame\obj\Debug\CheckersGame.pdb
-C:\ЖДТУ\2 курс\2 семестр\Конструювання ПЗ\Mod2-Теперь можно менять цвета фишкам\CheckersGame\bin\Debug\CheckersGame.exe.config
-C:\ЖДТУ\2 курс\2 семестр\Конструювання ПЗ\Mod2-Теперь можно менять цвета фишкам\CheckersGame\bin\Debug\CheckersGame.exe
-C:\ЖДТУ\2 курс\2 семестр\Конструювання ПЗ\Mod2-Теперь можно менять цвета фишкам\CheckersGame\bin\Debug\CheckersGame.pdb
-C:\ЖДТУ\2 курс\2 семестр\Конструювання ПЗ\Mod2-Теперь можно менять цвета фишкам\CheckersGame\obj\Debug\CheckersGame.csproj.AssemblyReference.cache
-C:\ЖДТУ\2 курс\2 семестр\Конструювання ПЗ\Mod2-Теперь можно менять цвета фишкам\CheckersGame\obj\Debug\CheckersGame.PrototypeCheckerGame.resources
-C:\ЖДТУ\2 курс\2 семестр\Конструювання ПЗ\Mod2-Теперь можно менять цвета фишкам\CheckersGame\obj\Debug\CheckersGame.Properties.Resources.resources
-C:\ЖДТУ\2 курс\2 семестр\Конструювання ПЗ\Mod2-Теперь можно менять цвета фишкам\CheckersGame\obj\Debug\CheckersGame.csproj.GenerateResource.cache
-C:\ЖДТУ\2 курс\2 семестр\Конструювання ПЗ\Mod2-Теперь можно менять цвета фишкам\CheckersGame\obj\Debug\CheckersGame.csproj.CoreCompileInputs.cache
-C:\ЖДТУ\2 курс\2 семестр\Конструювання ПЗ\Mod2-Теперь можно менять цвета фишкам\CheckersGame\obj\Debug\CheckersGame.exe
-C:\ЖДТУ\2 курс\2 семестр\Конструювання ПЗ\Mod2-Теперь можно менять цвета фишкам\CheckersGame\obj\Debug\CheckersGame.pdb

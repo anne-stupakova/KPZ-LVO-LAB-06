@@ -45,6 +45,7 @@ namespace CheckersGame
             Initialization();
         }
 
+        // Сhecker color change
         private void ColorCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
@@ -83,6 +84,33 @@ namespace CheckersGame
                 }
             }
         }
+
+
+        // Mechanics of counting the number of remaining checkers
+        public int CountCheckers(int player)
+        {
+            int count = 0;
+            for (int i = 0; i < MapSize; i++)
+            {
+                for (int j = 0; j < MapSize; j++)
+                {
+                    if (map[i, j] == player)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+        public void UpdateCheckersCountLabels()
+        {
+            int whiteCheckersCount = CountCheckers(1);
+            int blackCheckersCount = CountCheckers(2);
+
+            UpperLabel.Text = $"Player 1: {whiteCheckersCount}";
+            LowerLabel.Text = $"Player 2: {blackCheckersCount}";
+        }
+
 
 
 
@@ -251,6 +279,7 @@ namespace CheckersGame
             CloseSteps();
             DeactivateAllButtons();
             HandleContinuation();
+            UpdateCheckersCountLabels();
         }
         private void HandleContinuation()
         {
@@ -555,6 +584,7 @@ namespace CheckersGame
                 j += startIndexY;
                 currCount++;
             }
+            UpdateCheckersCountLabels();
 
         }
         public bool DeterminePath(int ti, int tj)
@@ -591,11 +621,6 @@ namespace CheckersGame
             {
                 button.Text = "👑";
             }
-        }
-
-        private void UPColorCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

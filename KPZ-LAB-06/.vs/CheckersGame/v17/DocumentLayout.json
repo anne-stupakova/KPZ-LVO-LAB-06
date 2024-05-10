@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\\u0412\u0430\u0434\u0438\u043C\\Desktop\\DKOOP\\Mod2-\u0414\u043E\u0431\u0430\u0432\u0438\u043B \u0446\u0432\u0435\u0442\u0430 \u0444\u0438\u0448\u043A\u0430\u043C\\",
+  "WorkspaceRootPath": "C:\\Users\\\u0412\u0430\u0434\u0438\u043C\\Desktop\\CheckersGame-master\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{70E86064-F4F6-433F-8BA1-2235A16D4834}|CheckersGame\\CheckersGame.csproj|c:\\users\\\u0432\u0430\u0434\u0438\u043C\\desktop\\dkoop\\mod2-\u0434\u043E\u0431\u0430\u0432\u0438\u043B \u0446\u0432\u0435\u0442\u0430 \u0444\u0438\u0448\u043A\u0430\u043C\\checkersgame\\prototypecheckergame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{70E86064-F4F6-433F-8BA1-2235A16D4834}|CheckersGame\\CheckersGame.csproj|c:\\users\\\u0432\u0430\u0434\u0438\u043C\\desktop\\checkersgame-master\\checkersgame\\prototypecheckergame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{70E86064-F4F6-433F-8BA1-2235A16D4834}|CheckersGame\\CheckersGame.csproj|solutionrelative:checkersgame\\prototypecheckergame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -20,12 +20,12 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "PrototypeCheckerGame.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\\u0412\u0430\u0434\u0438\u043C\\Desktop\\DKOOP\\Mod2-\u0414\u043E\u0431\u0430\u0432\u0438\u043B \u0446\u0432\u0435\u0442\u0430 \u0444\u0438\u0448\u043A\u0430\u043C\\CheckersGame\\PrototypeCheckerGame.cs",
+              "DocumentMoniker": "C:\\Users\\\u0412\u0430\u0434\u0438\u043C\\Desktop\\CheckersGame-master\\CheckersGame\\PrototypeCheckerGame.cs",
               "RelativeDocumentMoniker": "CheckersGame\\PrototypeCheckerGame.cs",
-              "ToolTip": "C:\\Users\\\u0412\u0430\u0434\u0438\u043C\\Desktop\\DKOOP\\Mod2-\u0414\u043E\u0431\u0430\u0432\u0438\u043B \u0446\u0432\u0435\u0442\u0430 \u0444\u0438\u0448\u043A\u0430\u043C\\CheckersGame\\PrototypeCheckerGame.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "C:\\Users\\\u0412\u0430\u0434\u0438\u043C\\Desktop\\CheckersGame-master\\CheckersGame\\PrototypeCheckerGame.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "CheckersGame\\PrototypeCheckerGame.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T11:58:44.986Z",
+              "WhenOpened": "2024-05-06T11:58:29.753Z",
               "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             }
           ]
